@@ -8,7 +8,7 @@ pipeline {
     }
     stage("test") {
       steps {
-        sh 'git log --format=format:%s -1'
+        sh 'git log --format="medium" -1 ${GIT_COMMIT}'
       }
     }
   }
