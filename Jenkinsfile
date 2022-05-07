@@ -6,5 +6,10 @@ pipeline {
         sh 'python3 *test.py'
       }
     }
+    stage("test") {
+      steps {
+        sh 'echo "this my first step to multi-steps"'
+      }
+    }
   }
 }
