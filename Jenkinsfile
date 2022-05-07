@@ -8,7 +8,7 @@ pipeline {
     }
     stage("test") {
       steps {
-        sh 'echo ${env.GIT_BRANCH}'
+        sh 'git log'
       }
     }
   }
