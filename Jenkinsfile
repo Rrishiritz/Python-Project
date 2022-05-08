@@ -28,6 +28,12 @@ pipeline{
 				sh 'docker push rishi1raj/python:$BUILD_NUMBER'
 			}
 		}
+		stage('run') {
+
+			steps {
+				sh 'docker run rishi1raj/python:$BUILD_NUMBER'
+			}
+		}
 	}
 
 	post {
