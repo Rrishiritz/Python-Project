@@ -1,7 +1,7 @@
 pipeline {
 environment {
 registry = "rishi1raj/python"
-registryCredential = 'rishi1raj'
+registryCredential = 'Rishi@9818498455'
 dockerImage = ''
 }
 agent any
