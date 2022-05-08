@@ -1,6 +1,6 @@
 pipeline {
 environment {
-registry = "https://hub.docker.com/repository/docker/rishi1raj/python"
+registry = "rishi1raj/python"
 registryCredential = 'rishi1raj'
 dockerImage = ''
 }
