@@ -6,7 +6,7 @@ pipeline {
         sh 'docker build -t python .'
       }
     }
-    stage("test") {
+    stage("git info") {
       steps {
         sh 'git log --format="medium" -1 ${GIT_COMMIT}'
       }
