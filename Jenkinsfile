@@ -1,16 +1,31 @@
 pipeline {
-  agent any
-  stages {
-    stage('build') {
-      steps {
-        sh 'docker build -t python .'
-        sh 'docker images'
-      }
-    }
-    stage("git info") {
-      steps {
-        sh 'git log --format="medium" -1 ${GIT_COMMIT}'
-      }
-    }
-  }
+environment {
+registry = "https://hub.docker.com/repository/docker/rishi1raj/python"
+registryCredential = 'rishi1raj'
+dockerImage = ''
+}
+agent any
+stages {
+stage('Building our image') {
+steps{
+script {
+dockerImage = docker.build registry + ":$BUILD_NUMBER"
+}
+}
+}
+stage('Deploy our image') {
+steps{
+script {
+docker.withRegistry( '', registryCredential ) {
+dockerImage.push()
+}
+}
+}
+}
+stage('Cleaning up') {
+steps{
+sh "docker rmi $registry:$BUILD_NUMBER"
+}
+}
+}
 }
