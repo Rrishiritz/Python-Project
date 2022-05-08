@@ -11,7 +11,7 @@ pipeline{
 		stage('Build') {
 
 			steps {
-                                sh 'docker build -t python rishi1raj/python:$BUILD_NUMBER .'
+                                sh 'docker build -t rishi1raj/python:$BUILD_NUMBER .'
 			}
 		}
 
