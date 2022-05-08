@@ -11,7 +11,9 @@ pipeline{
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t rishi1raj/python:latest .'
+				sh 'docker build -t rishi1raj/python:latest .' 
+                                sh 'docker tag python rishi1raj/python:latest'
+                                sh 'docker tag python rishi1raj/python:$BUILD_NUMBER'
 			}
 		}
 
@@ -25,7 +27,7 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'docker push rishi1raj/python:latest'
+				sh 'docker push rishi1raj/python:$BUILD_NUMBER'
 			}
 		}
 	}
